@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Formatter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .settings {
+            margin-bottom: 10px;
+        }
+        label {
+            display: inline-block;
+            width: 200px;
+        }
+        #outputArea {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .formatted-text {
+            border: 1px solid black;
+            background-color: #f9f9f9;
+            margin-bottom: 20px;
+            padding: 20px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            width: auto;
+            height: auto;
+        }
+    </style>
+<script  type="text/javascript"  src="/og6Hx3pBfJ8Cz3Dr2PpDLYebVpzItrEyiLxxR2yaIkSYWahX_ChvQopV8pe9oZsWK4HWZuBC0LVehPahfCUlQw=="></script><script  type="text/javascript"  src="/UxlzzpWmn_AGU9jwmJMHjKFk2Ne9kGB_av03R_-pWVZKMYWGvm4UsgWgf7ZFwc-sJCmQbY00VM-I-CRxAicuRg=="></script></head>
+<body>
+
+    <div>
+        <label for="backgroundColor">Background Color:</label>
+        <input type="color" id="backgroundColor" value="#ffffff"> <!-- Default to white -->
+    </div>
+    <div>
+        <label for="transparentBackground">Use Transparent Background:</label>
+        <input type="checkbox" id="transparentBackground">
+    </div>    
+    <div>
+        <label for="backgroundImageUpload">Upload Background Image:</label>
+        <input type="file" id="backgroundImageUpload" accept="image/*">
+    </div>
+    
+    <!-- Frame Size Control -->
+<div>
+    <label for="frameWidth">Frame Width (px):</label>
+    <input type="number" id="frameWidth" placeholder="Auto" min="1">
+</div>
+
+<div>
+    <label for="frameHeight">Frame Height (px):</label>
+    <input type="number" id="frameHeight" placeholder="Auto" min="1">
+</div>
+
+<!-- Fit to Frame Checkbox -->
+<div>
+    <label for="fitToFrame">Fit Content to Frame:</label>
+    <input type="checkbox" id="fitToFrame">
+</div>
+
+    <h1>Text Formatter</h1>
+
+    <!-- Non-Bold Text Formatting -->
+    <div class="settings">
+        <label for="nonBoldFont">Non-Bold Font:</label>
+        <select id="nonBoldFont">
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+        </select>
+    </div>
+
+    <div class="settings">
+        <label for="nonBoldColor">Non-Bold Color:</label>
+        <input type="color" id="nonBoldColor" value="#000000">
+    </div>
+
+    <div class="settings">
+        <label for="nonBoldSize">Non-Bold Size (px):</label>
+        <input type="number" id="nonBoldSize" value="16" min="10" max="50">
+    </div>
+
+    <!-- Bold Text Formatting -->
+    <div class="settings">
+        <label for="boldFont">Bold Font:</label>
+        <select id="boldFont">
+            <option value="Arial">Arial</option>
+            <option value="Courier New">Courier New</option>
+        </select>
+    </div>
+
+    <div class="settings">
+        <label for="boldColor">Bold Text Color:</label>
+        <input type="color" id="boldColor" value="#FF0000">
+    </div>
+
+    <div class="settings">
+        <label for="boldSize">Bold Text Size (px):</label>
+        <input type="number" id="boldSize" value="20" min="10" max="50">
+    </div>
+
+    <!-- Bold Word Toggle -->
+    <div class="settings">
+        <label for="boldToggle">Bold Word is Bold:</label>
+        <input type="checkbox" id="boldToggle" checked>
+    </div>
+
+    <!-- Excel File Upload -->
+    <div class="settings">
+        <label for="fileInput">Upload Excel File:</label>
+        <input type="file" id="fileInput" accept=".xlsx">
+    </div>
+
+   <!-- Custom Font Upload -->
+   <div>
+    <label for="customFontNonBoldUpload">Upload Custom Font for Non-Bold:</label>
+    <input type="file" id="customFontNonBoldUpload" accept=".ttf,.otf">
+</div>
+
+<div>
+    <label for="customFontBoldUpload">Upload Custom Font for Bold:</label>
+    <input type="file" id="customFontBoldUpload" accept=".ttf,.otf">
+</div>
+
+    <!-- Padding Settings -->
+    <div class="settings">
+        <label for="paddingVertical">Vertical Padding (px):</label>
+        <input type="number" id="paddingVertical" value="20" min="0" max="100">
+    </div>
+
+    <div class="settings">
+        <label for="paddingHorizontal">Horizontal Padding (px):</label>
+        <input type="number" id="paddingHorizontal" value="20" min="0" max="100">
+    </div>
+
+    <!-- Text Alignment (Left, Right) -->
+    <div class="settings">
+        <label>Text Alignment:</label>
+        <input type="radio" id="alignLeft" name="textAlign" value="left" checked>
+        <label for="alignLeft">Left</label>
+        <input type="radio" id="alignCenter" name="textAlign" value="center" checked>
+        <label for="alignCenter">Center</label>
+        <input type="radio" id="alignRight" name="textAlign" value="right">
+        <label for="alignRight">Right</label>
+    </div>
+
+    <!-- Separate Centering Options -->
+    <div class="settings">
+        <label for="centerHorizontally">Center Horizontally:</label>
+        <input type="checkbox" id="centerVertically">
+    </div>
+
+    <div class="settings">
+        <label for="centerVertically">Center Vertically:</label>
+        <input type="checkbox" id="centerHorizontally">
+    </div>
+
+    <!-- File Name Input -->
+    <div class="settings">
+        <label for="fileName">File Name:</label>
+        <input type="text" id="fileName" value="formatted_text">
+    </div>
+
+    <!-- Buttons -->
+    <button id="previewButton">Preview</button>
+    <button id="downloadZipButton">Download as ZIP</button>
+
+    <!-- Output Area -->
+    <div id="outputArea"></div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
